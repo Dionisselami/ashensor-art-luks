@@ -21,7 +21,7 @@ const safetyFeatures = [
 
 const SafetySection = () => {
   return (
-    <section className="min-h-screen flex flex-col justify-center py-20 px-6 bg-background/95 backdrop-blur-sm">
+    <section className="min-h-screen flex flex-col justify-center py-20 px-6 bg-muted/30">
       <div className="max-w-7xl mx-auto w-full">
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-4">
@@ -35,14 +35,14 @@ const SafetySection = () => {
             return (
               <Card
                 key={feature.title}
-                className="bg-card border-border hover:border-primary hover:shadow-2xl hover:shadow-primary/20 transition-all duration-700 group animate-fade-in transform hover:-translate-y-2"
-                style={{ animationDelay: `${index * 0.15}s` }}
+                className="bg-card border-border hover:border-primary transition-all duration-500 group animate-fade-in"
+                style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <CardContent className="p-8 text-center space-y-4">
-                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-500 mb-4">
-                    <Icon className="w-10 h-10 text-primary group-hover:scale-110 transition-transform duration-500" />
+                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300 mb-4">
+                    <Icon className="w-10 h-10 text-primary" />
                   </div>
-                  <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">{feature.title}</h3>
+                  <h3 className="text-2xl font-bold text-foreground">{feature.title}</h3>
                   <p className="text-muted-foreground">{feature.description}</p>
                 </CardContent>
               </Card>
