@@ -11,8 +11,9 @@ const Index = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPercentage = Math.min(window.scrollY / window.innerHeight, 1);
-      setBgOpacity(1 - scrollPercentage);
+      const scrollPercentage = Math.min(window.scrollY / (window.innerHeight * 0.8), 1);
+      const easedOpacity = 1 - Math.pow(scrollPercentage, 1.5);
+      setBgOpacity(easedOpacity);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -20,13 +21,14 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="relative overflow-x-hidden">
+    <div className="relative overflow-x-hidden bg-background">
       {/* Fixed Background Elevator Image */}
       <div 
-        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat transition-opacity duration-300"
+        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat will-change-[opacity]"
         style={{ 
           backgroundImage: `url(${elevatorBg})`,
-          opacity: bgOpacity
+          opacity: bgOpacity,
+          transition: 'opacity 0.1s ease-out'
         }}
       />
       
