@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import elevatorImage from "@/assets/elevator-behind-doors.jpg";
 
 const ElevatorDoors = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,14 +24,6 @@ const ElevatorDoors = () => {
 
   return (
     <div className="fixed inset-0 z-50 pointer-events-none">
-      {/* Elevator Image Behind Doors */}
-      <div className="absolute inset-0 flex items-center justify-center bg-background">
-        <img 
-          src={elevatorImage} 
-          alt="Luxury Elevator" 
-          className="w-full h-full object-cover"
-        />
-      </div>
       {/* Left Door */}
       <div
         className={`absolute top-0 left-0 h-full w-1/2 transition-transform duration-[1200ms] ease-[cubic-bezier(0.65,0,0.35,1)] ${
