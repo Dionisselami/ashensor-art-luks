@@ -1,7 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const ContactSection = () => {
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    navigate('/contact');
+  };
+
   return (
     <section className="min-h-screen flex flex-col justify-center py-20 px-6">
       <div className="max-w-4xl mx-auto w-full text-center space-y-12">
@@ -32,7 +39,11 @@ const ContactSection = () => {
           </div>
         </div>
 
-        <Button size="lg" className="text-lg px-12 py-6 bg-primary hover:bg-primary/90 text-primary-foreground">
+        <Button 
+          size="lg" 
+          className="text-lg px-12 py-6 bg-primary hover:bg-primary/90 text-primary-foreground"
+          onClick={handleContactClick}
+        >
           Kontaktoni Tani
         </Button>
       </div>
