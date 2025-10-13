@@ -6,6 +6,10 @@ const HeroSection = () => {
     document.getElementById("models")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollToContact = () => {
+    document.querySelector("section:last-of-type")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section className="min-h-screen flex flex-col items-center justify-center px-6 relative animate-fade-in">
       <div className="text-center space-y-8 max-w-4xl mx-auto">
@@ -16,10 +20,10 @@ const HeroSection = () => {
           Duke Përcaktuar Artin e Lëvizjes Vertikale
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8 animate-fade-in" style={{ animationDelay: "0.7s" }}>
-          <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-primary-foreground">
+          <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-primary-foreground" onClick={scrollToModels}>
             Zgjidhni Modelin Tuaj
           </Button>
-          <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-primary text-foreground hover:bg-primary/10">
+          <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-primary text-foreground hover:bg-primary/10" onClick={scrollToContact}>
             Kërkoni një Kuotë
           </Button>
         </div>
