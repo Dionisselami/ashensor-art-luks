@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { login, logout, isAuthenticated as checkAuth } from "@/lib/auth";
 import { 
   Users, 
   Mail, 
@@ -128,10 +129,7 @@ const Admin = () => {
     }
 
     // Check if already authenticated
-    const authStatus = localStorage.getItem('admin-authenticated');
-    if (authStatus === 'true') {
-      setIsAuthenticated(true);
-    }
+    setIsAuthenticated(checkAuth());
   }, []);
 
   // Save contacts to localStorage whenever contacts change
@@ -144,16 +142,15 @@ const Admin = () => {
   // Authentication functions
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (username === "admin" && password === "shpetimi") {
+    if (login(username, password)) {
       setIsAuthenticated(true);
-      localStorage.setItem('admin-authenticated', 'true');
       setLoginError("");
       toast({
         title: "Mirëseerdhët!",
         description: "Jeni kyçur me sukses në panelin e administratorit.",
       });
     } else {
-      setLoginError("Kredencialet janë të gabuara. Përdorni: admin / shpetimi");
+      setLoginError("Kredencialet janë të gabuara. Përdorni: admin / shpetimi1234");
       toast({
         title: "Gabim në kyçje",
         description: "Kredencialet janë të gabuara.",
@@ -163,8 +160,8 @@ const Admin = () => {
   };
 
   const handleLogout = () => {
+    logout();
     setIsAuthenticated(false);
-    localStorage.removeItem('admin-authenticated');
     setUsername("");
     setPassword("");
     toast({
@@ -353,7 +350,7 @@ const Admin = () => {
                     type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="shpetimi"
+                    placeholder="shpetimi1234"
                     required
                   />
                   <Button
@@ -378,7 +375,7 @@ const Admin = () => {
               <p className="text-sm text-muted-foreground">
                 <strong>Kredencialet:</strong><br />
                 Përdoruesi: <code>admin</code><br />
-                Fjalëkalimi: <code>shpetimi</code>
+                Fjalëkalimi: <code>shpetimi1234</code>
               </p>
             </div>
           </CardContent>
