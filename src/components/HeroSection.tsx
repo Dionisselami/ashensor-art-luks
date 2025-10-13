@@ -1,13 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+  
   const scrollToModels = () => {
     document.getElementById("models")?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const scrollToContact = () => {
-    document.querySelector("section:last-of-type")?.scrollIntoView({ behavior: "smooth" });
+  const handleQuoteClick = () => {
+    navigate('/contact');
   };
 
   return (
@@ -23,7 +26,7 @@ const HeroSection = () => {
           <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-primary-foreground" onClick={scrollToModels}>
             Zgjidhni Modelin Tuaj
           </Button>
-          <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-primary text-foreground hover:bg-primary/10" onClick={scrollToContact}>
+          <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-primary text-foreground hover:bg-primary/10" onClick={handleQuoteClick}>
             Kërkoni një Kuotë
           </Button>
         </div>
